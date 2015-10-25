@@ -5,6 +5,7 @@
  */
 package programacaovi.spring.security;
 
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +25,7 @@ public class Application implements CommandLineRunner {
    
     // Injeção, instância automática do objeto
     @Autowired
-    private DummyService dummyService;
+    private PessoaService pessoaService;
 
     /**
      * @param args the command line arguments
@@ -35,8 +36,8 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... strings) throws Exception {
-        String foo = dummyService.foo();
-        logger.info("DummyService retornou {}", foo);
+        List<Pessoa> pessoas = pessoaService.findPessoasWithNomeLikeMo();
+        logger.info("PessoaService retornou {}", pessoas);
     }
     
 }
